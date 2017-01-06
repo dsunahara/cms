@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :pages, only: [:show]
   namespace :admin do
+    resources :menus, except: [:show]
     resources :pages # /admin/pages
   end
   
@@ -13,7 +16,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'admin/pages#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
